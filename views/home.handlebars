@@ -1,0 +1,47 @@
+<h1>Registration number web app</h1>
+<div class="">
+    <h3>Insert the registration number Template!</h3>
+</div>
+<div class="warningLevels">
+    <label>
+        <h3>Number Plate</h3>
+    </label>
+    <form action="/names" method="post">
+        <input type="text" placeholder="E.g. CY 123, CA 123, CJ123.." name="searching" class="registration" pattern="[A-Z]{2,3}\s\d{3}\W\d{3}|[A-Z]{2,3}\s\d{2,3}" title="Example: CA 123-345">
+        <button class="buttonDisplayValue" type="submit" name="btn">
+            <i class="fa fa-search">ADD</i>
+        </button>
+    </form>
+</div>
+<div>
+    <form action="/results" method="get">
+        <div class="select-style">
+            <select>
+                <option value="All">Default</option>
+                <option value="CA ">Cape Town</option>
+                <option value="CY">Bellville</option>
+                <option value="CL">Stellenbosch</option>
+                <option value="CJ">Paarl</option>
+                <option value="CAW">Goerge</option>
+            </select>
+        </div>
+</div> 
+<button class="DisplayCitys" type="submit" name="button">FILTER CITY</button>
+<br>
+</form>
+<br>
+<form action="/clear" method="get">
+    <button class="clearButton" type="submit" name="button">CLEAR</button>
+</form>
+<div class="">
+    
+    <ul class="displayPlates">
+    {{#each regList}}
+
+    <li>{{plates}}</li>
+    
+    {{/each}}
+    </ul>
+    
+</div>
+</div>
