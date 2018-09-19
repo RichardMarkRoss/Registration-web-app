@@ -1,16 +1,24 @@
 module.exports = function (registrationFactory, regDataFun) {
     async function index (req, res) {
-        res.render('home', {});
+        const regList = await regDataFun.regResults();
+        res.render('home', {
+            regList
+        });
     }
 
     async function home (req, res, next) {
         const plate = req.body.searching;
         try {
-            await regDataFun.filterReg(plate);
-            const regList = await regDataFun.regResults();
-            res.render('home', {
-                regList
-            });
+            if (plate !== undefined) {
+                await regDataFun.filterReg(plate);
+                const regList = await regDataFun.regResults();
+                res.render('home', {
+                    regList
+                });
+            } else {
+                req.flash('error', 'please insert registration number!');
+                res.redirect('/');
+            }
         } catch (err) {
             next(err);
         }
@@ -22,14 +30,15 @@ module.exports = function (registrationFactory, regDataFun) {
         });
     }
     async function filter (req, res, next) {
-        // const urltype = req.params.type;
         try {
-            let filtering = await regDataFun.regCheckList();
+            const list = req.body.list;
+            let regList = await regDataFun.regCheckList(list);
             res.render('home', {
-                filtering
+                regList,
+                list
             });
         } catch (err) {
-            next(err);
+            res.send(err);
         }
     }
 

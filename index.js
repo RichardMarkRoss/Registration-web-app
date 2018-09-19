@@ -42,7 +42,7 @@ app.use(bodyParser.urlencoded({
 app.get('/', routes.index);
 app.post('/names', routes.home);
 app.get('/clear', routes.reset);
-app.get('/results/:type', routes.filter);
+app.post('/results', routes.filter);
 
 app.use(express.static('public'));
 let PORT = process.env.PORT || 4010;
