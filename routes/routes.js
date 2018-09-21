@@ -1,4 +1,4 @@
-module.exports = function (registrationFactory, regDataFun) {
+module.exports = function (regDataFun) {
     async function index (req, res) {
         const regList = await regDataFun.regResults();
         res.render('home', {
@@ -9,7 +9,7 @@ module.exports = function (registrationFactory, regDataFun) {
     async function home (req, res, next) {
         const plate = req.body.searching;
         try {
-            if (plate !== undefined) {
+            if (plate !== '') {
                 await regDataFun.filterReg(plate);
                 const regList = await regDataFun.regResults();
                 res.render('home', {
@@ -32,11 +32,18 @@ module.exports = function (registrationFactory, regDataFun) {
     async function filter (req, res, next) {
         try {
             const list = req.body.list;
-            let regList = await regDataFun.regCheckList(list);
-            res.render('home', {
-                regList,
-                list
-            });
+            if (list !== 'All') {
+                let regList = await regDataFun.regCheckList(list);
+                res.render('home', {
+                    regList,
+                    list
+                });
+            } else {
+                let regList = await regDataFun.regResults(list);
+                res.render('home', {
+                    regList
+                });
+            }
         } catch (err) {
             res.send(err);
         }

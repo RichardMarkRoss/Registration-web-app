@@ -1,13 +1,12 @@
 const exphbs = require('express-handlebars');
 const express = require('express');
 const app = express();
-const regFactory = require('./registration-number-factory');
 const regDataBase = require('./reg-database-function');
 const regRoutes = require('./routes/routes');
 
 const bodyParser = require('body-parser');
-// const flash = require('express-flash');
-// const session = require('express-session');
+const flash = require('express-flash');
+const session = require('express-session');
 const pg = require('pg');
 const Pool = pg.Pool;
 
@@ -25,13 +24,19 @@ const pool = new Pool({
     ssl: useSSL
 });
 const regDataFun = regDataBase(pool);
-const registrationFactory = regFactory(regDataFun);
-const routes = regRoutes(registrationFactory, regDataFun);
+const routes = regRoutes(regDataFun);
+
+app.use(session({
+    secret: '<add a secret string here>',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
+app.use(flash())
 
 app.use(bodyParser.json());
 

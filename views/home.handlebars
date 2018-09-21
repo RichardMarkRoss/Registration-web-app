@@ -13,6 +13,12 @@
         </button>
     </form>
 </div>
+
+{{#if messages.error}}
+<div class='error'>
+    {{messages.error}}
+</div>
+{{/if}}
 <div class="justMove">
     <div class="select">
     <form action="/results" method="post">
