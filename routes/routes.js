@@ -10,11 +10,17 @@ module.exports = function (regDataFun) {
         const plate = req.body.searching;
         try {
             if (plate !== '') {
-                await regDataFun.filterReg(plate);
-                const regList = await regDataFun.regResults();
-                res.render('home', {
-                    regList
-                });
+                const checkPlates = await regDataFun.checkIfSame(plate);
+                if (checkPlates.length === 0) {
+                    await regDataFun.filterReg(plate);
+                    const regList = await regDataFun.regResults();
+                    res.render('home', {
+                        regList
+                    });
+                } else {
+                    req.flash('error', 'PLEASE INSERT THE CORRECT OR NON-EXISTING PLATE');
+                    res.redirect('/');
+                }
             } else {
                 req.flash('error', 'please insert registration number!');
                 res.redirect('/');
