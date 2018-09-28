@@ -27,7 +27,7 @@ describe('testing the database functionality', function () {
         await theRegFunction.filterReg('CA 321-321');
         let list = await theRegFunction.regResults();
         let car = list.map(listed => listed.plates);
-        assert.deepEqual(['CA 321-321', 'CA 123-123'], car);
+        assert.deepEqual(['CA 123-123', 'CA 321-321'], car);
     });
     it('test the filtering of the registration in the database', async function () {
         await theRegFunction.filterReg('CA 123-123');
