@@ -47,7 +47,7 @@ describe('testing the database functionality', function () {
             plates: 'CA 123-123',
             towns_id: 1
         }]);
-    })
+    });
     it('should clear the database when the function is running', async function () {
         await theRegFunction.filterReg('CA 123-123');
         await theRegFunction.filterReg('CJ 123-123');
