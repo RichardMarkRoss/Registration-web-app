@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "directories": {
-    "test": "nyc mocha"
+    "test": "test"
   },
   "scripts": {
     "test": "nyc mocha",
