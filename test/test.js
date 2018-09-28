@@ -55,7 +55,7 @@ describe('testing the database functionality', function () {
         const deleted = await theRegFunction.clearDataBase();
         assert.strictEqual(undefined, deleted);
     });
-    it('should check if hold the same plates in the database',);
+    // it('should check if hold the same plates in the database',);
     after(function () {
         pool.end();
     });
