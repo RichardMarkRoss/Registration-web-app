@@ -1,7 +1,20 @@
+html{
+
+
+}
+.warningLevels{
+    padding: 0.1em
+}
 .container {
        text-align: center;
+       height: 100%;
        font-style: normal;
+              background-image: url('ajE2z01_460swp.webp');
+              background-repeat: no-repeat;
+              background-size: 50% 70em;
+              background-position: 50%;
    }
+   
    .justMove{
        font-style: normal;
        margin-left: 38%;
@@ -49,14 +62,50 @@
        opacity: 1;
        right: 0;
    }
-   input[type=text] {
-       -webkit-transition: width 0.4s ease-in-out;
-       transition: width 0.4s ease-in-out;
-   }
+.text-input {
 
-   input[type=text]:focus {
-       width: 20%;
-   }
+    position: relative;
+    margin-top: 50px;
+}
+    input[type="text"] {
+        display: inline-block;
+        width: 300px;
+        height: 40px;
+        box-sizing: border-box;
+        outline: none;
+        border: 1px solid lightgray;
+        border-radius: 3px;
+        padding: 10px 10px 10px 100px;
+        transition: all 0.1s ease-out;
+    }
+
+    input[type="text"]+label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+        border-radius: 3px 0 0 3px;
+        padding: 0 20px;
+        background: #E03616;
+        transform: translateZ(0) translateX(0);
+        transition: all 0.3s ease-in;
+        transition-delay: 0.2s;
+    }
+
+    input[type="text"]:focus+label {
+        transform: translateY(-120%) translateX(0%);
+        border-radius: 3px;
+        transition: all 0.1s ease-out;
+    }
+
+    input[type="text"]:focus {
+        padding: 10px;
+        transition: all 0.3s ease-out;
+        transition-delay: 0.2s;
+    }
 
    select {
        font-style: normal;
@@ -67,7 +116,7 @@
        outline: 0;
        box-shadow: none;
        border: 0 !important;
-       background: #2c3e50;
+       background: #4cca11;
        background-image: none;
    }
 
@@ -78,7 +127,7 @@
        width: 20em;
        height: 3em;
        line-height: 3;
-       background: #2c3e50;
+       background: #43b820;
        overflow: hidden;
        border-radius: .25em;
    }
@@ -104,7 +153,7 @@
        right: 0;
        bottom: 0;
        padding: 0 1em;
-       background: #34495e;
+       background: #56c235;
        pointer-events: none;
    }
 
@@ -121,7 +170,7 @@
 
    li{ display: inline-block;
        border:solid;
-       width: 10%;
+       width: 80px;
        padding: 10px;
        margin: 4px;
        border-radius: 20%;
@@ -130,4 +179,11 @@
 
    ul{
        text-align:center;
-   }
+       width: 50%;
+       /* text-align: center; */
+   display: inline-block;
+    }
+    .error{
+        color:rgb(255, 255, 255);
+        font-style: bold;
+    }
