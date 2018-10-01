@@ -1,23 +1,24 @@
 <h1>Registration number web app</h1>
-    <h3>Insert the registration number Template!</h3>
+<h3>Insert the registration number Template!</h3>
 <div class="warningLevels">
     <form action="/names" method="post">
-    <div class="text-input">
-        <input type="text" placeholder="E.g. CY 123, CA 123, CJ123.." name="searching" class="registration" pattern="[A-Z]{2,3}\s\d{3}\W\d{3}|[A-Z]{2,3}\s\d{3}" title="Example: CA 123-345"></input>
+        <div class="text-input">
+            <input type="text" placeholder="E.g. CY 123, CA 123, CJ123.." name="searching" class="registration" pattern="[A-Z]{2,3}\s\d{3}\W\d{3}|[A-Z]{2,3}\s\d{3}"
+                title="Example: CA 123-345"></input>
         </div>
         <button class="buttonDisplayValue" type="submit" name="btn">
             <i class="fa fa-search">ADD</i>
         </button>
     </form>
-{{#if messages.error}}
-<div class='error'>
-    <h4>{{messages.error}}</h4>
-</div>
-{{/if}}
+    {{#if messages.error}}
+    <div class='error'>
+        <h4>{{messages.error}}</h4>
+    </div>
+    {{/if}}
 </div>
 <div class="justMove">
     <div class="select">
-    <form action="/results" method="post">
+        <form action="/results" method="post">
             <select name="list" id="slct">
                 <option value="All">Default</option>
                 <option value="CA">Cape Town</option>
@@ -26,22 +27,19 @@
                 <option value="CJ">Paarl</option>
                 <option value="CAW">Goerge</option>
             </select>
-        </div>
-</div> 
+
+    </div>
+</div>
 <button class="DisplayCitys" type="submit" name="button">FILTER</button>
-<br>
 </form>
 <br>
 <form action="/clear" method="get">
     <button class="clearButton" type="submit" name="button">CLEAR</button>
 </form>
-<div class="">
-    
-    <ul class="displayPlates">
+<ul class="displayPlates">
     {{#each regList}}
     <li>{{plates}}</li>
     {{/each}}
-    </ul>
-    
+</ul>
 </div>
 </div>

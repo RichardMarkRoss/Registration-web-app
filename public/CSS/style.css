@@ -1,22 +1,31 @@
 html {
+    position:static;
     background-image: url('Universe-hd-purple-wallpaper-2.jpg');
-    background-repeat: no-repeat;
     background-size: 100% 100%;
     font-style: normal;
-
+    height: 100%;
 }
-
+.DisplayCitys{
+    text-align: center;
+    padding: 0.5cm;
+    /* align: right; */
+}
+.clearButton{
+    text-align: center;
+    padding: 0.5cm;
+    /* align-content: center; */
+}
 .warningLevels {
     padding: 0.1em
 }
 
 .container {
+    position:static;
     text-align: center;
-    height: 100%;
     font-style: normal;
     background-image: url('ajE2z01_460swp.webp');
     background-repeat: no-repeat;
-    background-size: 50% 70em;
+    background-size: 700px 70em;
     background-position: 50%;
 }
 
@@ -179,10 +188,10 @@ select {
     transition: .25s all ease;
 }
 
-li {
+li {position: relative;
     display: inline-block;
     border: solid;
-    width: 80px;
+    width: 100px;
     padding: 10px;
     margin: 4px;
     border-radius: 20%;
